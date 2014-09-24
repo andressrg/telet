@@ -17,4 +17,19 @@ var app = new EmberApp();
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
-module.exports = app.toTree();
+// Put the bootstrap fonts in the place that the bootstrap css expects to find them.
+var pickFiles = require('broccoli-static-compiler');
+var bootstrapFonts = pickFiles('bower_components/bootstrap-sass-official/assets/fonts/bootstrap', {
+    srcDir: '/',
+    destDir: '/fonts/bootstrap'
+});
+
+var appTree = app.toTree();
+
+// autoprefix
+var autoprefixer = require('broccoli-autoprefixer');
+appTree = autoprefixer(appTree);
+
+// Merge the bootstrapFonts with the ember app tree
+var mergeTrees = require('broccoli-merge-trees');
+module.exports = mergeTrees([appTree, bootstrapFonts]);
