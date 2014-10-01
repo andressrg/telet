@@ -6,6 +6,9 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('forms');
+  this.route('charts');
+  this.route('tables');
 });
 
 export default Router;
