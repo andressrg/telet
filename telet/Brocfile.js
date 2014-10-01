@@ -29,6 +29,8 @@ var fontawesomeFonts = pickFiles('bower_components/fontawesome/fonts/', {
     destDir: '/fonts/'
 });
 
+app.import('bower_components/chartjs/Chart.js');
+
 var appTree = app.toTree();
 
 // autoprefix
