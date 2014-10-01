@@ -24,6 +24,11 @@ var bootstrapFonts = pickFiles('bower_components/bootstrap-sass-official/assets/
     destDir: '/fonts/bootstrap'
 });
 
+var fontawesomeFonts = pickFiles('bower_components/fontawesome/fonts/', {
+    srcDir: '/',
+    destDir: '/fonts/'
+});
+
 var appTree = app.toTree();
 
 // autoprefix
@@ -32,4 +37,4 @@ appTree = autoprefixer(appTree);
 
 // Merge the bootstrapFonts with the ember app tree
 var mergeTrees = require('broccoli-merge-trees');
-module.exports = mergeTrees([appTree, bootstrapFonts]);
+module.exports = mergeTrees([appTree, bootstrapFonts, fontawesomeFonts]);
