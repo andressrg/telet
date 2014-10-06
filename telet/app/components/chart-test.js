@@ -77,6 +77,11 @@ export default Ember.Component.extend({
     };
 
     var myLineChart = new Chart(ctx).Line(data, options);
+    this.set('chart', myLineChart);
   },
+
+  willDestroyElement: function() {
+    this.get('chart').destroy();
+  }
 
 });
